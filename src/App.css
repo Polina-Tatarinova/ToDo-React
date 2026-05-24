@@ -1,0 +1,223 @@
+/* App.css */
+
+/* ------------------ Глобальные стили и сброс ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ------------------ Стили для App (контейнер) ------------------ */
+.app-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 32px;
+  box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.app-header h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task-count {
+  background: rgba(255, 255, 255, 0.25);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 8px;
+  backdrop-filter: blur(2px);
+}
+
+/* ------------------ Стили для ToDoForm ------------------ */
+.todo-form {
+  padding: 24px 24px 16px;
+  background: white;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.form-group {
+  display: flex;
+  gap: 12px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 60px;
+  outline: none;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.form-button {
+  background: linear-gradient(95deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0 24px;
+  border-radius: 60px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.form-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px -8px #667eea;
+}
+
+.form-button:active {
+  transform: scale(0.98);
+}
+
+/* ------------------ Стили для списка задач (ToDo) ------------------ */
+.todo-list {
+  padding: 8px 24px 24px;
+  background: white;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-radius: 60px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  border: 1px solid #edf2f7;
+}
+
+.todo-item:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+  word-break: break-word;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.todo-text:hover {
+  color: #667eea;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 8px 12px;
+  border-radius: 40px;
+  transition: all 0.2s ease;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+  transform: scale(1.05);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+/* анимация появления новой задачи */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-item {
+  animation: fadeSlideUp 0.25s ease;
+}
+
+/* пустое состояние */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* ------------------ Адаптивность для мобильных ------------------ */
+@media (max-width: 500px) {
+  .app-header h1 {
+    font-size: 1.4rem;
+  }
+  .form-group {
+    gap: 8px;
+  }
+  .form-input {
+    padding: 12px 16px;
+  }
+  .form-button {
+    padding: 0 18px;
+  }
+  .todo-item {
+    padding: 8px 12px;
+  }
+  .todo-text {
+    font-size: 0.9rem;
+  }
+}
